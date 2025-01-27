@@ -1,39 +1,57 @@
-import React, { useState, useEffect } from 'react';
-import { themes } from './hooks/UseTheme'; 
-import NavBar from './components/NavBar';
-import ContentSwitcher from './components/ContentSwitcher';
-import Footer from './components/Footer';
+import React, { useState, useEffect } from "react";
+import AddIssue from "./components/AddIssue";
+import DeleteIssue from "./components/DeleteIssue";
+import IssuesList from "./components/IssuesList";
+import EditIssue from "./components/EditIssue";
+import Header from "./components/Header";
+import IssuesManager from "./components/IssuesManagerView";
+import Login from "./components/Login"
+import SingUp from "./components/SingUp"
+
+// استيراد مكون المنجر
+// import { useTheme } from "./hooks/useTheme"; // تعديل المسار هنا
 
 const App = () => {
-  const [activeView, setActiveView] = useState('Login');
-  const [currentTheme, setCurrentTheme] = useState(themes.Pink_dark);  // تغيير القيمة الافتراضية إلى Pink_dark
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [activeContent, setActiveContent] = useState("login");
+  // const { theme, changeTheme } = useTheme(); // استخدام الهوك لتغيير الثيم
+  // تغيير الألوان عند تغيير الثيم
+  // useEffect(() => {
+  //   document.documentElement.style.setProperty("--primary-color", theme.primary);
+  //   document.documentElement.style.setProperty("--secondary-color", theme.secondary);
+  //   document.documentElement.style.setProperty("--tertiary-color", theme.background);
+  //   document.documentElement.style.setProperty("--contrasting-color", theme.contrasting);
+  // }, [theme]);
 
-  // color type change 
-  useEffect(() => {
-    document.documentElement.style.setProperty('--primary-color', currentTheme.primary);
-    document.documentElement.style.setProperty('--secondary-color', currentTheme.secondary);
-    document.documentElement.style.setProperty('--tertiary-color', currentTheme.background); // تعديل لتعيين اللون الخلفي
-    document.documentElement.style.setProperty('--contrasting-color', currentTheme.contrasting); // إضافة للون المعاكس
-  }, [currentTheme]);
+  // اختيار المكون بناءً على الزر النشط
+  let compContBt;
+  switch (activeContent) {
+    case "add":
+      compContBt = <AddIssue  />;
+      break;
+    case "delete":
+      compContBt = <DeleteIssue />;
+      break;
+    case "view":
+      compContBt = <IssuesList  />;
+      break;
+    case "edit":
+      compContBt = <EditIssue />;
+      break;
+        case "singup":
+          compContBt = <SingUp />;
+          break;
+    default:
+        compContBt = <Login/>;
+  }
 
-  return (
-    <div
-      className="w-screen h-screen grid grid-cols-[auto_1fr] grid-rows-[1fr_auto] transition-all duration-500"
-      style={{ backgroundColor: 'var(--tertiary-color)', color: 'var(--primary-color)' }}
-    >
-      <NavBar 
-        setActiveView={setActiveView} 
-        setIsDropdownOpen={setIsDropdownOpen} 
-        isDropdownOpen={isDropdownOpen} 
-        themes={themes} 
-        setCurrentTheme={setCurrentTheme} 
-      />
+  return (<>
+      <div className="w-screen bg-slate-400 h-screen grid grid-rows-[80px_1fr_50px] transition-all duration-500 text-[var(--contrasting-color)]">
 
-      <ContentSwitcher activeView={activeView} currentTheme={currentTheme} />
-
-      <Footer />
-    </div>
+       <Header setActiveContent={setActiveContent} />
+      <div className="text-[var(--primary-color)] flex justify-center items-center">{compContBt}</div>
+      <IssuesManager setActiveContent={setActiveContent} />
+     </div> 
+    </>
   );
 };
 

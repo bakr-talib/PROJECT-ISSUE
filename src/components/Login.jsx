@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import SignUp from './Singup';
+import SignUp from './SingUp';
  // Import the SignUp component
 
 function Login() {
@@ -75,7 +75,7 @@ function Login() {
                 type="password"
                 id="password"
                 name="password"
-                value={formData.password}
+                value={formData.password} 
                 onChange={handleChange}
                 className="w-full p-2 border rounded"
               />
