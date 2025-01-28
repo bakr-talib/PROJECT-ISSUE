@@ -17,7 +17,7 @@ const Header = ({setActiveContent}) => {
   
 
   return (
-    <header className="bg-[var(--primary-color)] p-4 shadow-md w-screen h-20 flex items-center justify-around rounded-bl-3xl rounded-br-3xl border-b-2 border-[#ffffff20] md:rounded-none md:shadow-none">
+    <header className="bg-[var(--translucent-color)] md:order-1 md:col-span-2 p-4 shadow-md w-screen h-20 flex items-center justify-around rounded-bl-3xl rounded-br-3xl border-b-2 border-[#ffffff20] md:rounded-none md:shadow-none">
       {isSearchActive ? (
         <div className="w-full flex items-center justify-center">
           <div className="relative w-3/4">
@@ -54,7 +54,7 @@ const Header = ({setActiveContent}) => {
               <img src={userImg} alt="account" className="w-6" />
             </button>
             {isDropdownOpen && (
-              <div className="absolute top-10 right-0 bg-white shadow-lg rounded-md p-2 w-32 z-10">
+              <div className="absolute top-10 right-0 bg-[var(--primary-color)] shadow-lg rounded-md p-2 w-32 z-10">
                 <button
                 onClick={() => setActiveContent("singup")}
                 className="block w-full text-left px-2 py-1 hover:bg-gray-200 rounded">

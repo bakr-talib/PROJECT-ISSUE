@@ -6,18 +6,18 @@ import reviewImage from "../assets/review.png";
 
 const IssuesManager = ({ setActiveContent }) => {
   return (
-    <div className="flex flex-row justify-evenly bg-slate-500">
+    <div className="flex flex-row  justify-evenly items-center rounded-tl-xl rounded-tr-xl md:flex-col md:order-2 md:w-20 md:rounded-none bg-[var(--translucent-color)]">
       <button onClick={() => setActiveContent("view")}>
-        <img className="w-10" src={reviewImage} alt="Review" />
+        <img className="w-8" src={reviewImage} alt="Review" />
       </button>
       <button onClick={() => setActiveContent("add")}>
-        <img className="w-10" src={addImage} alt="Add" />
+        <img className="w-8" src={addImage} alt="Add" />
       </button>
       <button onClick={() => setActiveContent("edit")}>
-        <img className="w-10" src={editingImage} alt="Edit" />
+        <img className="w-8" src={editingImage} alt="Edit" />
       </button>
       <button onClick={() => setActiveContent("delete")}>
-        <img className="w-10" src={deleteImage} alt="Delete" />
+        <img className="w-8" src={deleteImage} alt="Delete" />
       </button>
     </div>
   );

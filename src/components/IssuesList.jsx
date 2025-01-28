@@ -30,26 +30,26 @@ const IssuesList = () => {
 
   if (error)
     return (
-      <div className="flex justify-center items-center h-screen">
+      <div className="flex justify-center items-center h-screen text-[var(--primary-color)]">
         <p className="text-lg font-semibold text-red-500">Error: {error}</p>
       </div>
     );
 
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-white rounded-2xl shadow-md">
+    <div className="max-w-4xl mx-auto p-6 border-2 border-[var(--contrasting-color)] backdrop-blur-[2px] rounded-lg shadow-lg">
       <h2 className="text-2xl font-bold mb-6 text-gray-800 border-b pb-2">
         Issues List
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 overflow-scroll h-80">
         {issues.map((issue) => (
           <div
             key={issue.documentId}
-            className="p-4 bg-gray-100 rounded-lg shadow-md hover:shadow-lg transition-shadow"
+            className="p-4 bg-[var(--primary-color)] text-[var(--contrasting-color)] rounded-lg shadow-md hover:shadow-lg transition-shadow"
           >
-            <h3 className="text-lg font-semibold text-gray-800 mb-2">
+            <h3 className="text-lg font-semibold mb-2">
               {issue.title}
             </h3>
-            <p className="text-sm text-gray-600">
+            <p className="text-sm ">
               {issue.description || "No description available."}
             </p>
           </div>

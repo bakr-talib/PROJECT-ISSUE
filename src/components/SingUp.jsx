@@ -67,7 +67,7 @@ function SignUp() {
   };
 
   return (
-    <div className="max-w-sm mx-auto mt-10 p-5 border rounded-lg shadow-lg">
+    <div className="max-w-sm mx-auto mt-10 p-5 border-2 border-[var(--contrasting-color)] backdrop-blur-[2px] rounded-lg shadow-lg">
       <h2 className="text-xl font-bold mb-4">Sign Up</h2>
       {successMessage && <p className="text-green-900 mb-4">{successMessage}</p>}
       {errors.apiError && <p className="text-red-500 mb-4">{errors.apiError}</p>}
@@ -80,7 +80,7 @@ function SignUp() {
             name="username"
             value={formData.username}
             onChange={handleChange}
-            className={`w-full p-2 border rounded ${errors.username ? 'border-red-500' : 'border-gray-300'}`}
+            className={`w-full p-2 border border-[var(--primary-color)] rounded }`}
           />
           {errors.username && <p className="text-red-500 text-sm">{errors.username}</p>}
         </div>
@@ -93,7 +93,7 @@ function SignUp() {
             name="email"
             value={formData.email}
             onChange={handleChange}
-            className={`w-full p-2 border rounded ${errors.email ? 'border-red-500' : 'border-gray-300'}`}
+            className={`w-full p-2 border rounded  border-[var(--primary-color)]`}
           />
           {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
         </div>
@@ -106,14 +106,14 @@ function SignUp() {
             name="password"
             value={formData.password}
             onChange={handleChange}
-            className={`w-full p-2 border rounded ${errors.password ? 'border-red-500' : 'border-gray-300'}`}
+            className={`w-full p-2 border rounded border-[var(--primary-color)]`}
           />
           {errors.password && <p className="text-red-500 text-sm">{errors.password}</p>}
         </div>
 
         <button
           type="submit"
-          className="w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600"
+          className="w-full bg-[var(--primary-color)] text-white p-2 rounded"
           disabled={isSubmitting}
         >
           {isSubmitting ? 'Signing up...' : 'Sign Up'}

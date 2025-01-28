@@ -40,7 +40,6 @@ const EditIssue = () => {
       ...selectedCard,
       title,
       description,
-
     };
 
     const response = await fetch(`http://localhost:1337/api/issues/${documentId}`, {
@@ -61,9 +60,9 @@ const EditIssue = () => {
   };
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center p-4 space-y-6">
       {/* فورم التعديل */}
-      <form className="w-full max-w-lg p-4 bg-white shadow-lg rounded-md mb-4">
+      <form className="w-full max-w-lg p-4 bg-white shadow-lg rounded-md">
         <h2 className="text-2xl font-bold text-center mb-4">تعديل العنوان والوصف</h2>
         <div className="mb-4">
           <label className="block text-gray-700">العنوان</label>
@@ -87,22 +86,22 @@ const EditIssue = () => {
         <button
           type="submit"
           onClick={handleSubmit}
-          className="w-full bg-blue-500 text-white p-2 rounded-md"
+          className="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600"
         >
           تعديل
         </button>
       </form>
 
       {/* عرض الكروت */}
-      <div className="flex overflow-x-auto space-x-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full overflow-scroll h-60">
         {data.map((card) => (
           <div
             key={card.documentId} // استخدام documentId بدلاً من id
-            className="w-60 h-40 p-4 bg-gray-100 rounded-lg shadow-md cursor-pointer hover:shadow-xl"
+            className="p-4 bg-gray-100 rounded-lg shadow-md cursor-pointer hover:shadow-lg"
             onClick={() => handleCardClick(card)}
           >
-            <h3 className="text-lg font-bold">{card.title}</h3>
-            <p className="text-sm text-gray-600">{card.description}</p>
+            <h3 className="text-lg font-bold truncate">{card.title}</h3>
+            <p className="text-sm text-gray-600 truncate">{card.description}</p>
           </div>
         ))}
       </div>
