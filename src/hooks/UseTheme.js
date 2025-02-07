@@ -30,7 +30,7 @@ export const themes = {
     primary_translucent: "rgba(15, 25, 51, 0.7)",  // لون إساسي مع شفافية 70%
     contrasting: "#BAECFF", // لون معاكس من ناحية الغمق والكشف  
     secondary: "#182850", //لون ثانوي  
-    background: "##6AB0BE", // خلفية  
+    background: "#C6FAFF", // خلفية  
   },
 
   Yellow_dark: {

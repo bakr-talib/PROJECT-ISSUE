@@ -37,20 +37,32 @@ const IssuesList = () => {
 
   return (
     <div className="max-w-4xl mx-auto p-6 border-2 border-[var(--contrasting-color)] backdrop-blur-[2px] rounded-lg shadow-lg">
-      <h2 className="text-2xl font-bold mb-6 text-gray-800 border-b pb-2">
+      <h2 className="text-2xl font-bold mb-6 border-b pb-2">
         Issues List
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 overflow-scroll h-80">
+      <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 overflow-y-scroll scrollbar-hide h-80">
         {issues.map((issue) => (
           <div
             key={issue.documentId}
-            className="p-4 bg-[var(--primary-color)] text-[var(--contrasting-color)] rounded-lg shadow-md hover:shadow-lg transition-shadow"
+            className="p-4 h-40 bg-[var(--background-color)]  rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200"
           >
-            <h3 className="text-lg font-semibold mb-2">
-              {issue.title}
-            </h3>
-            <p className="text-sm ">
+       
+            {/* Title */}
+            <h3 className="text-lg font-semibold mb-2">{issue.title}</h3>
+
+            {/* Description */}
+            <p className="text-sm mb-2">
               {issue.description || "No description available."}
+            </p>
+
+            {/* Counter */}
+            <p className="text-sm mb-2">
+              {issue.counter !== null ? issue.counter : "No counter available."}
+            </p>
+
+            {/* Status */}
+            <p className="text-sm">
+              {issue.issueStatus || "No status available."}
             </p>
           </div>
         ))}
